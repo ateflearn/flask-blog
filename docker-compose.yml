@@ -4,7 +4,7 @@ services:
     build: .
     container_name: ateflearns_flaskweb
     volumes:
-      - source_code:/app
+      - source_code:/flaskapp
     networks:
       - backend
     expose:
@@ -22,9 +22,23 @@ services:
     networks:
       - backend
 
+  postgres:
+    image: postgres:latest
+    container_name: ateflearns_postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - backend
+
 volumes:
   source_code:
     name: ateflearns_sourcecode
+  postgres_data:
+    name: ateflearns_dbvolume
 
 networks:
   backend:
