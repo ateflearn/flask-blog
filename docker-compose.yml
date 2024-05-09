@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  flaskweb:
+    build: .
+    container_name: ateflearns_flaskweb
+    volumes:
+      - source_code:/app
+    networks:
+      - backend
+    expose:
+      - 5000
+
+  nginx:
+    image: nginx:latest
+    container_name: ateflearns_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - flaskweb
+    networks:
+      - backend
+
+volumes:
+  source_code:
+    name: ateflearns_sourcecode
+
+networks:
+  backend:
+    name: ateflearns_backendnet
