@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="py-5">
+    <h2>Create New Post</h2>
+    <form method="post" id="postForm">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="title">Title</label>
+            {{ form.title(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <!-- Changed to a hidden input to store the Quill content -->
+            <input type="hidden" name="content" id="content">
+            <!-- Quill editor container -->
+            <div id="editor" style="height: 300px;"></div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<!-- Include the Quill library -->
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.1/dist/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.1/dist/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+  const quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+
+  // Handle the form submission to include the Quill content in the hidden input
+  const form = document.getElementById('postForm');
+  form.onsubmit = function() {
+    // Get the HTML content of the editor
+    const content = quill.root.innerHTML;
+    // Set the content to the hidden input
+    document.getElementById('content').value = content;
+  };
+</script>
+{% endblock %}

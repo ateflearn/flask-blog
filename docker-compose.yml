@@ -25,6 +25,8 @@ services:
   postgres:
     image: postgres:latest
     container_name: ateflearns_postgres
+    env_file:
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:

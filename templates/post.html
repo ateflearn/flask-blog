@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <article>
+        <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+        <div class="text-muted fst-italic mb-2">Posted on {{ post.date_posted.strftime('%B %d, %Y') }}</div>
+        <img class="img-fluid rounded" src="{{ post.image_url }}" alt="{{ post.title }}">
+        <section class="mb-5">
+            {{ post.content|safe }}
+        </section>
+    </article>
+{% endblock %}

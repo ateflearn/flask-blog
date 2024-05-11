@@ -2,6 +2,8 @@
 Flask>=2
 Flask-SQLAlchemy
 Flask-Migrate
+Flask-WTF
 Werkzeug>=2
 psycopg2-binary
-SQLAlchemy-Utils
+python-dotenv
+
