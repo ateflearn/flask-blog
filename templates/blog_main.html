@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <!-- Include dynamic content for blog posts list -->
-    <div class="row">
-        {% for post in posts %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="{{ post.image_url }}" alt="{{ post.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.summary }}</p>
-                    <a href="{{ url_for('post', slug=post.slug) }}" class="btn btn-primary">Read More</a>
-                </div>
+<div class="posts-container">
+    {% for post in posts %}
+        <div class="blog-post-card">
+            <img src="{{ url_for('uploaded_file', filename=post.image_url.split('/')[-1]) }}" alt="{{ post.title }}">
+            <div class="post-info">
+                <h5>{{ post.title }}</h5>
+                <p>{{ post.summary }}</p>
+                <a href="{{ url_for('post', slug=post.slug) }}" class="btn btn-primary">Read More</a>
             </div>
         </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
+</div>
 {% endblock %}

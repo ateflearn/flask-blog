@@ -22,7 +22,7 @@ init_db(app)
 
 @app.route('/')
 def home():
-    return 'Hello, World! This is Atef!'
+    return render_template('index.html')
 
 @app.route('/blog')
 def blog():
@@ -70,6 +70,23 @@ def post(slug):
     post = BlogPost.query.filter_by(slug=slug).first_or_404()
     return render_template('post.html', post=post)
 
+@app.route('/post/manage')
+def manage_posts():
+    posts = BlogPost.query.order_by(BlogPost.date_posted.desc()).all()
+    return render_template('manage_posts.html', posts=posts)
+
+@app.route('/post/view/<int:post_id>')
+def view_post(post_id):
+    post = BlogPost.query.get_or_404(post_id)
+    return render_template('view_post.html', post=post)
+
+@app.route('/post/delete/<int:post_id>', methods=['POST'])
+def delete_post(post_id):
+    post = BlogPost.query.get_or_404(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Post deleted successfully', 'success')
+    return redirect(url_for('manage_posts'))
 
 # Helper functions
 # ----------------

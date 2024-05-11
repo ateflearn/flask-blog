@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <article>
-        <img class="img-fluid rounded" src="{{ url_for('uploads', filename=post.image_url.split('/')[-1]) }}" alt="Post Image">
-        <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
-        <div class="text-muted fst-italic mb-2">Posted on {{ post.date_posted.strftime('%B %d, %Y') }}</div>
-        <section class="mb-5">
-            {{ post.content|safe }}
-        </section>
-    </article>
+    <div class="post-header" style="background-image: url('{{ url_for('uploaded_file', filename=post.image_url.split('/')[-1]) }}');">
+        <h1>{{ post.title }}</h1>
+    </div>
+    <div class="post-content">
+        {{ post.content|safe }}
+    </div>
 {% endblock %}
