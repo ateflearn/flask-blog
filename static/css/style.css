@@ -241,7 +241,7 @@ section {
 
 .btn-color-1,
 .btn-color-2:hover {
-  background: rgb(53, 53, 53);
+  background: rgb(82, 81, 81);
   color: white;
 }
 
@@ -256,6 +256,35 @@ section {
 .btn-color-2:hover {
   border: rgb(255, 255, 255) 0.1rem solid;
 }
+
+.btn-delete-1,
+.btn-delete-2 {
+  border: rgb(225, 25, 25) 0.1rem solid;
+}
+
+.btn-delete-1:hover,
+.btn-delete-2:hover {
+  cursor: pointer;
+}
+
+.btn-delete-1,
+.btn-delete-2:hover {
+  background: rgb(225, 25, 25);
+  color: white;
+}
+
+.btn-delete-1:hover {
+  background: rgb(0, 0, 0);
+}
+
+.btn-delete-2 {
+  background: none;
+}
+
+.btn-delete-2:hover {
+  border: rgb(255, 255, 255) 0.1rem solid;
+}
+
 
 .btn-container {
   gap: 1rem;
@@ -433,108 +462,90 @@ footer p {
 
 /* BLOG SECTION */
 
-/* Basic Styling for Content Container */
-.content-container {
-  width: 80%;
-  margin: auto;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  background: #fff;
-  border-radius: 8px;
-}
-
-/* Styling for form fields */
-.form-field {
-  margin-bottom: 20px;
-}
-
-/* Label styling */
-.form-field label {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-/* Text input and file input styling */
-.text-input, .file-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-/* Button styling */
-.submit-button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-/* Adjustments to the Quill editor to match form styling */
-#editor {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Hover effects for button */
-.submit-button:hover {
-  background-color: #0056b3;
-}
-
-
-/* POST SECTION */
-
 #blogs {
   display: flex;
+  flex-wrap: wrap; /* Allows multiple rows */
   justify-content: center;
-  gap: 5rem;
-  height: 80vh;
+  gap: 2rem; /* Adjusted gap for consistency */
+  align-items: flex-start; /* Align items at the start of the container */
+  margin: 20px; /* Added margin for overall spacing */
 }
 
-/* Style for the blog post cards */
-.blog-post-card {
-  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(0,0,0,0.2));
-  margin: 10px;
-  width: calc(33.333% - 20px); /* Three cards per row with margin */
-  height: 200px; /* Fixed height */
-  display: inline-block;
-  color: white; /* Text color for visibility against backgrounds */
-  position: relative; /* To position text within the card */
-  overflow: hidden; /* Ensures no overflow of content */
+.blog-details-container {
+  display: flex; /* Ensure this is also flex if it wasn't */
+  flex-direction: column; /* Stack the child elements vertically */
+  /* width: 100%;  Take full width to contain the child flex containers */
 }
 
-/* Style the title inside the card */
-.blog-post-card h1 {
-  position: absolute;
-  bottom: 10px; /* Positioned at the bottom of the card */
-  left: 10px;
-  width: calc(100% - 20px); /* Full width minus padding */
-  text-align: center; /* Center the text */
-  font-size: 1.2em; /* Adjust size accordingly */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+.blog-containers {
+  display: flex; /* This needs to be flex to apply flex properties */
+  flex-wrap: wrap;
+  justify-content: space-around; /* Adjust this as needed */
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-/* Responsive adjustments for mobile devices */
-@media (max-width: 600px) {
-  .blog-post-card {
-      width: calc(50% - 20px); /* Two cards per row on mobile */
-      height: 150px; /* Smaller height on mobile */
-  }
+.blog-post-container {
+  flex: 0 0 30%; /* Takes up 30% of the flex container's width */
+  padding: 1.5rem;
+  background: white;
+  border-radius: 1rem; /* Adjusted for design consistency */
+  border: 1px solid #A3A3A3; /* Simplified border property */
+  text-align: center;
+  height: auto; /* Adjust height as necessary */
 }
 
-/* Additional adjustments for very small screens */
-@media (max-width: 400px) {
-  .blog-post-card {
-      width: 100%; /* Full width for very small screens */
-      height: 100px; /* Reduced height for very small screens */
-  }
+.blog-post-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the content */
+  gap: 1rem;
+}
+
+.blog-post-img {
+  width: 350px; 
+  height: 200px; 
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #555555;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+
+.form-group {
+  margin-bottom: 1.5rem; /* Space between form groups */
+}
+
+.form-group label {
+  display: block; /* Make labels block level for better control */
+  margin-bottom: .5rem; /* Space below the label */
+  color: #666; /* Light grey color for the text */
+  font-size: 1rem; /* Medium font size for readability */
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-control {
+  width: 100%; /* Full width */
+  padding: 8px 10px; /* Padding for input fields */
+  border: 1px solid #ccc; /* Subtle border around input fields */
+  border-radius: 4px; /* Rounded corners for the input fields */
+  box-sizing: border-box; /* Include padding and border in the width */
 }

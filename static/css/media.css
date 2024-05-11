@@ -13,6 +13,9 @@
   #blogs {
     height: fit-content;
   }
+  .blog-post-img {
+    width: 550px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -110,5 +113,8 @@
   }
   .text-container {
     text-align: justify;
+  }
+  .blog-post-img {
+    width: 300px;
   }
 }
