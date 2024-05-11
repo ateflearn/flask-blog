@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section id = "blogs">
-    <div class="blog-details-container">
-        <div class="blog-containers">
+        <section id = "blogs">
+            <div class="blog-details-container">
+                <div class="blog-containers">
 
-            {% for post in posts %}
-            <div class="blog-post-container color-container">
-                <div class="blog-post-image-container ">
-                    <img src="{{ url_for('uploaded_file', filename=post.image_url.split('/')[-1]) }}" alt="{{ post.title }}" class="blog-post-img">
-                </div>
-                <h2 class="experience-sub-title project-title">{{ post.title }}</h2>
-                <div class="btn-container">
-                    <a href="{{ url_for('post', slug=post.slug) }}">
-                        <button class="btn btn-color-2 project-btn">
-                        Read More
-                        </button>
-                    </a>
-                </div>
+                    {% for post in posts %}
+                    <div class="blog-post-container color-container">
+                        <div class="blog-post-image-container ">
+                            <img src="{{ url_for('uploaded_file', filename=post.image_url.split('/')[-1]) }}" alt="{{ post.title }}" class="blog-post-img">
+                        </div>
+                        <h2 class="experience-sub-title project-title">{{ post.title }}</h2>
+                        <div class="btn-container">
+                            <a href="{{ url_for('post', slug=post.slug) }}">
+                                <button class="btn btn-color-2 project-btn">
+                                Read More
+                                </button>
+                            </a>
+                        </div>
+                    </div>
 
-            {% endfor %}
-        </div>
-    </div>
-</section>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
 {% endblock %}

@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="post-header" style="background-image: url('{{ url_for('uploaded_file', filename=post.image_url.split('/')[-1]) }}');">
-        <h1>{{ post.title }}</h1>
-    </div>
-    <div class="post-content">
-        {{ post.content|safe }}
-    </div>
+
+        <section class="blogs">
+            <div class="experience-details-container">
+                <div class="article-container" style="background: linear-gradient(to bottom, transparent, rgb(255, 255, 255)), url('{{ url_for('uploaded_file', filename=post.image_url.split('/')[-1]) }}'); background-size: cover; height:250px; width:100%;">
+                    <h1 style="padding: 20px;font-size:xx-large; display:inline-block; margin-right:auto; margin-top: auto;">{{ post.title }}</h1>
+                </div>
+                <div class="article-container">
+                    {{ post.content|safe }}
+                </div>
+            </div>
+        </section>
+
 {% endblock %}
